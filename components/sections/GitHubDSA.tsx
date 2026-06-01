@@ -1,13 +1,14 @@
 import { useReveal } from "@/hooks/useReveal";
 import { SLabel } from "@/components/ui/SLabel";
 import {
-  Github,
   Terminal,
   GitBranch,
   Activity,
   Code2,
   Star,
 } from "lucide-react";
+
+import {Github} from "@/components/ui/icons/Github";
 
 export function GitHubDSA() {
   const [ref, on] = useReveal();

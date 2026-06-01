@@ -2,10 +2,11 @@ import { useState } from "react";
 import {
   ArrowUpRight,
   CheckCircle2,
-  Mail,
-  Github,
-  Linkedin,
+  Mail
 } from "lucide-react";
+
+import { Github } from "@/components/ui/icons/Github";
+import { Linkedin } from "@/components/ui/icons/Linkedin";
 import { SLabel } from "@/components/ui/SLabel";
 import { useReveal } from "@/hooks/useReveal";
 

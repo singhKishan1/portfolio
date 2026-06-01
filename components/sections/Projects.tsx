@@ -7,6 +7,7 @@ import { MetricPill } from "@/components/ui/MetricPill";
 import { MutedLink } from "@/components/ui/MutedLink";
 import { PROJECTS } from "@/data/projects";
 import type { Project } from "@/types";
+import {Github} from "@/components/ui/icons/Github";
 
 import { ExternalLink, ChevronDown } from "lucide-react";
 

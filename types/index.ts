@@ -34,3 +34,10 @@ export interface BlogPost {
   read: string;
   tags: string[];
 }
+
+export interface CmdItem {
+  id: string;
+  label: string;
+  hint: string;
+  onClick: () => void;
+}

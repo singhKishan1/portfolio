@@ -4,7 +4,7 @@ import { BLOG_DATA } from "@/data/blog";
 import { MutedLink } from "@/components/ui/MutedLink";
 import { SLabel } from "@/components/ui/SLabel";
 
-export function Projects(){
+export function Blog(){
     const [ref, on] = useReveal();
   return (
     <section id="blog" ref={ref} className={`reveal ${on ? "on" : ""}`}
