@@ -1,9 +1,5 @@
 import { useState } from "react";
-import {
-  ArrowUpRight,
-  CheckCircle2,
-  Mail
-} from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Mail } from "lucide-react";
 
 import { Github } from "@/components/ui/icons/Github";
 import { Linkedin } from "@/components/ui/icons/Linkedin";
@@ -26,15 +22,20 @@ export function Contact() {
     {
       Icon: Mail,
       label: "Email",
-      val: "kishan@email.dev",
-      href: "mailto:kishan@email.dev",
+      val: "kishan995694@gmail.com",
+      href: "mailto:kishan995694@gmail.com",
     },
-    { Icon: Github, label: "GitHub", val: "github.com/kishan", href: "#" },
+    {
+      Icon: Github,
+      label: "GitHub",
+      val: "github.com/singhKishan1",
+      href: "https://github.com/singhKishan1",
+    },
     {
       Icon: Linkedin,
       label: "LinkedIn",
       val: "linkedin.com/in/kishan",
-      href: "#",
+      href: "https://www.linkedin.com/in/kishan-singh-770b671b9/",
     },
   ];
 

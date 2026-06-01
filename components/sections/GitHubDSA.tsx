@@ -19,10 +19,10 @@ export function GitHubDSA() {
     { label: "GitHub Stars", val: "127", Icon: Star },
   ];
   const dsa = [
-    { label: "Total Solved", val: "147", color: "var(--accent)" },
-    { label: "Easy", val: "52", color: "#50fa7b" },
-    { label: "Medium", val: "78", color: "#ffb86c" },
-    { label: "Hard", val: "17", color: "#ff5555" },
+    { label: "Total Solved", val: "614", color: "var(--accent)" },
+    { label: "Easy", val: "205", color: "#50fa7b" },
+    { label: "Medium", val: "370", color: "#ffb86c" },
+    { label: "Hard", val: "39", color: "#ff5555" },
   ];
 
   return (
@@ -176,7 +176,7 @@ export function GitHubDSA() {
                   fontSize: 14,
                 }}
               >
-                23 days 🔥
+                17 days 🔥
               </span>
             </div>
           </div>
