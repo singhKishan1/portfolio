@@ -41,9 +41,7 @@ If your project uses other libraries, add the appropriate `npm install` command 
 
 ## Portfolio Image
 
-```markdown
 ![Portfolio Screenshot](./public/images/portfolio.png)
-```
 
 Example usage in a React component:
 
