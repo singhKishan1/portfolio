@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ArrowUpRight, CheckCircle2, Mail } from "lucide-react";
+import {Link} from "next/link";
 
 import { Github } from "@/components/ui/icons/Github";
 import { Linkedin } from "@/components/ui/icons/Linkedin";
@@ -114,6 +115,8 @@ export function Contact() {
               <a
                 key={label}
                 href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   display: "flex",
                   gap: 14,

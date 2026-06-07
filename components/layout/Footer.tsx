@@ -26,10 +26,17 @@ export function Footer() {
         {[
           ["Work", "#work"],
           ["Blog", "#blog"],
-          ["GitHub", "#github"],
-          ["Contact", "#contact"],
+          ["GitHub", "https://github.com/singhKishan1"],
+          ["Contact", "kishan995694@gmail.com"],
         ].map(([l, h]) => (
-          <a key={l} href={h} className="nlink" style={{ fontSize: 11 }}>
+          <a
+            key={l}
+            href={h}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nlink"
+            style={{ fontSize: 11 }}
+          >
             {l}
           </a>
         ))}
