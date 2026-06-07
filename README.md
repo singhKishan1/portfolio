@@ -41,18 +41,14 @@ If your project uses other libraries, add the appropriate `npm install` command 
 
 ## Portfolio Image
 
-Include a portfolio image in your project to showcase your work. Add the image file to your public or assets folder and reference it in the markdown or component.
-
-Example markdown:
-
 ```markdown
-![Portfolio Screenshot](./public/portfolio-image.png)
+![Portfolio Screenshot](./public/images/portfolio.png)
 ```
 
 Example usage in a React component:
 
 ```jsx
-<img src="/portfolio-image.png" alt="Portfolio Screenshot" />
+<img src="./public/images/portfolio.png" alt="Portfolio Screenshot" />
 ```
 
 ## Project Structure
