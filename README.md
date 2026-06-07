@@ -48,7 +48,7 @@ If your project uses other libraries, add the appropriate `npm install` command 
 Example usage in a React component:
 
 ```jsx
-<img src="./public/images/portfolio.png" alt="Portfolio Screenshot" />
+<img src="https://github.com/singhKishan1/portfolio/blob/master/public/images/portfolio.png" alt="Portfolio Screenshot" />
 ```
 
 ## Project Structure
