@@ -107,7 +107,7 @@ export function Projects() {
                     flexShrink: 0,
                   }}
                 >
-                  <MutedLink href="#" style={{ gap: 5 }}>
+                  <MutedLink href="https://github.com/singhKishan1/CodeCrafterHTTP/tree/master" style={{ gap: 5 }}>
                     <Github size={14} />
                     GitHub
                   </MutedLink>

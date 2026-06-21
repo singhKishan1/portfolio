@@ -10,6 +10,8 @@ export function MutedLink({
   return (
     <a
       href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       style={{
         color: "var(--muted)",
         textDecoration: "none",

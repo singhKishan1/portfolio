@@ -4,7 +4,7 @@ export const EXPERIENCE: ExperienceItem[] = [
   {
     role: "Software Engineer — Java Backend",
     company: "Nucleus Software Exports",
-    period: "2023 — Present",
+    period: "2024 — Present",
     type: "Full-time · Fintech",
     highlights: [
       "Implemented Content Security Policy across the core lending platform — eliminated XSS attack surface and passed external security audit",
@@ -18,7 +18,7 @@ export const EXPERIENCE: ExperienceItem[] = [
   {
     role: "Assistant Software Engineer",
     company: "Nucleus Software Exports",
-    period: "2023 - 2023 (Trainee)",
+    period: "2023 - 2024 (Trainee)",
     type: "Trainee · Fintech",
     highlights: [
       " Developed full-stack enterprise applications using Java, Spring Boot, Spring MVC, Hibernate, JSP, and frontend technologies for scalable business workflows",
