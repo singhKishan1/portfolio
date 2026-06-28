@@ -1,17 +1,59 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { useReveal } from "@/hooks/useReveal";
 import { SLabel } from "@/components/ui/SLabel";
-import {
-  Terminal,
-  GitBranch,
-  Activity,
-  Code2,
-  Star,
-} from "lucide-react";
+import { Terminal, GitBranch, Activity, Code2, Star } from "lucide-react";
 
-import {Github} from "@/components/ui/icons/Github";
+import { Github } from "@/components/ui/icons/Github";
 
 export function GitHubDSA() {
+  const [leetcodeStats, setLeetcodeStats] = useState<any>(null);
+
   const [ref, on] = useReveal();
+
+  useEffect(() => {
+    async function fetchLeetcodeStats() {
+      try {
+        const response = await fetch("/api/leetcode?username=singh_kishan");
+
+        if (!response.ok) {
+          throw new Error("API failed");
+        }
+
+        const data = await response.json();
+
+        console.log(data);
+
+        setLeetcodeStats(data.matchedUser);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    fetchLeetcodeStats();
+  }, []);
+
+  useEffect(() => {
+    console.log("leetcodeStats:", leetcodeStats);
+  }, [leetcodeStats]);
+
+  if (!leetcodeStats) {
+    return <div>Loading...</div>;
+  }
+
+  const submissionStats = leetcodeStats.submitStats.acSubmissionNum;
+  const total = submissionStats.find((x: any) => x.difficulty === "All")?.count;
+
+  const easy = submissionStats.find((x: any) => x.difficulty === "Easy")?.count;
+
+  const medium = submissionStats.find(
+    (x: any) => x.difficulty === "Medium",
+  )?.count;
+
+  const hard = submissionStats.find((x: any) => x.difficulty === "Hard")?.count;
+  const currentStreak = leetcodeStats.userCalendar.streak;
+
   const gh = [
     { label: "Public Repos", val: "24", Icon: GitBranch },
     { label: "Commits (YTD)", val: "847", Icon: Activity },
@@ -19,10 +61,10 @@ export function GitHubDSA() {
     { label: "GitHub Stars", val: "127", Icon: Star },
   ];
   const dsa = [
-    { label: "Total Solved", val: "631", color: "var(--accent)" },
-    { label: "Easy", val: "213", color: "#50fa7b" },
-    { label: "Medium", val: "378", color: "#ffb86c" },
-    { label: "Hard", val: "40", color: "#ff5555" },
+    { label: "Total Solved", val: total, color: "var(--accent)" },
+    { label: "Easy", val: easy, color: "#50fa7b" },
+    { label: "Medium", val: medium, color: "#ffb86c" },
+    { label: "Hard", val: hard, color: "#ff5555" },
   ];
 
   return (
@@ -176,7 +218,7 @@ export function GitHubDSA() {
                   fontSize: 14,
                 }}
               >
-                38 days 🔥
+                {currentStreak} days 🔥
               </span>
             </div>
           </div>
