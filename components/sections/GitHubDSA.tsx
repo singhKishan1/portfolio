@@ -8,9 +8,29 @@ import { Terminal, GitBranch, Activity, Code2, Star } from "lucide-react";
 import { Github } from "@/components/ui/icons/Github";
 
 export function GitHubDSA() {
+  const [githubStats, setGithubStats] = useState<any>(null);
   const [leetcodeStats, setLeetcodeStats] = useState<any>(null);
 
   const [ref, on] = useReveal();
+
+  useEffect(() => {
+    async function fetchGitHubStats() {
+      try {
+        const response = await fetch("api/github?username=singhKishan1");
+        if (!response.ok) {
+          throw new Error("GitHub API failed");
+        }
+
+        const data = await response.json();
+        console.log("github stats:", data);
+        setGithubStats(data.user);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    fetchGitHubStats();
+  }, []);
 
   useEffect(() => {
     async function fetchLeetcodeStats() {
@@ -38,35 +58,62 @@ export function GitHubDSA() {
     console.log("leetcodeStats:", leetcodeStats);
   }, [leetcodeStats]);
 
-  if (!leetcodeStats) {
+  if (!leetcodeStats || !githubStats) {
     return <div>Loading...</div>;
   }
 
+  // leetcode stats
   const submissionStats = leetcodeStats.submitStats.acSubmissionNum;
-  const total = submissionStats.find((x: any) => x.difficulty === "All")?.count;
+  const leetcodeTotalSubmission = submissionStats.find(
+    (x: any) => x.difficulty === "All",
+  )?.count;
 
-  const easy = submissionStats.find((x: any) => x.difficulty === "Easy")?.count;
+  const leetcodeEasy = submissionStats.find(
+    (x: any) => x.difficulty === "Easy",
+  )?.count;
 
-  const medium = submissionStats.find(
+  const leetcodeMedium = submissionStats.find(
     (x: any) => x.difficulty === "Medium",
   )?.count;
 
-  const hard = submissionStats.find((x: any) => x.difficulty === "Hard")?.count;
-  const currentStreak = leetcodeStats.userCalendar.streak;
+  const leetcodeHard = submissionStats.find(
+    (x: any) => x.difficulty === "Hard",
+  )?.count;
+  const leetcodeCurrentStreak = leetcodeStats.userCalendar.streak;
+
+  const dsa = [
+    {
+      label: "Total Solved",
+      val: leetcodeTotalSubmission,
+      color: "var(--accent)",
+    },
+    { label: "Easy", val: leetcodeEasy, color: "#50fa7b" },
+    { label: "Medium", val: leetcodeMedium, color: "#ffb86c" },
+    { label: "Hard", val: leetcodeHard, color: "#ff5555" },
+  ];
+
+
+
+
+  // github stats
+  const githubPublicRepos = githubStats.publicRepositories.totalCount;
+  const githubCommitsYTD =githubStats.contributionsCollection.totalCommitContributions;
+  const githubPullRequests = githubStats.pullRequests.totalCount;
+  // Extract stargazer counts from nested structure
+  const stargazerCounts = githubStats.repositories.nodes.map(x => x.stargazerCount);
+  // Calculate total stars
+  const totalStars = stargazerCounts.reduce((sum, count) => sum + count, 0);
+
+  // const githubStars = githubStats.repositories.totalCount;
 
   const gh = [
-    { label: "Public Repos", val: "24", Icon: GitBranch },
-    { label: "Commits (YTD)", val: "847", Icon: Activity },
-    { label: "Pull Requests", val: "63", Icon: Code2 },
-    { label: "GitHub Stars", val: "127", Icon: Star },
-  ];
-  const dsa = [
-    { label: "Total Solved", val: total, color: "var(--accent)" },
-    { label: "Easy", val: easy, color: "#50fa7b" },
-    { label: "Medium", val: medium, color: "#ffb86c" },
-    { label: "Hard", val: hard, color: "#ff5555" },
+    { label: "Public Repos", val: githubPublicRepos, Icon: GitBranch },
+    { label: "Commits (YTD)", val: githubCommitsYTD, Icon: Activity },
+    { label: "Pull Requests", val: githubPullRequests, Icon: Code2 },
+    { label: "GitHub Stars", val: totalStars, Icon: Star },
   ];
 
+  // component render
   return (
     <section id="github" ref={ref} className={`reveal ${on ? "on" : ""}`}>
       <div className="wrap">
@@ -218,7 +265,7 @@ export function GitHubDSA() {
                   fontSize: 14,
                 }}
               >
-                {currentStreak} days 🔥
+                {leetcodeCurrentStreak} days 🔥
               </span>
             </div>
           </div>
